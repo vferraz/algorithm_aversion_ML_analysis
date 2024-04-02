@@ -17,4 +17,10 @@ Keywords: Algorithm Aversion, Human-Computer Interaction, Decision Behavior, Mac
   - `AA2_machine_learning`: Jupyter notebook containing machine learning models for predicting delegation behavior.
   - `AA3_uplift_random_forest`: Jupyter notebook for causal inference and heterogeneous treatment effects using the Uplift Random Forest.
 
+## How to Use
+
+- To replicate the oTree experiment, navigate to the `otree_experiment_source/` directory and follow the instructions.
+- Datasets are located in the `data_analysis_reproductio/data/` directory for data analysis. Statistical and machine learning analyses can be conducted using the scripts and notebooks in the `data_analysis_reproductions/` section.
+
+
 Corresponding Author: Vinicius Ferraz - visferraz@gmail.com
