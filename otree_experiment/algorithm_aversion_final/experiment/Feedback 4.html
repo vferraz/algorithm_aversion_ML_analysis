@@ -1,0 +1,20 @@
+{{ block title }}
+    Round Feedback
+{{ endblock }}
+{{ block content }}
+
+     {% if player.delegation == 1  %}Product {{player.selection}} has been selected by the algorithm. {% endif %}
+     The payoff for this choice is {{player.payoff_round|to1}}. 
+     
+     
+     <br><br>
+     
+     Your total payoff so far is {{player.payoff_total|to1}}
+     
+     <br><br>
+    
+    Please click "next" to continue. <br><br>
+    
+    {{ next_button }}
+
+{{ endblock }}

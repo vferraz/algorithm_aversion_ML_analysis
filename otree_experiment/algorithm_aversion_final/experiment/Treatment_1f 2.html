@@ -1,0 +1,95 @@
+{{ block title }}
+    Product Selection
+{{ endblock }}
+{{ block content }}
+
+    <style>
+       * {
+       box-sizing: border-box;
+       }
+       .column {
+       float: left;
+       width: 33.33%;
+       padding: 5px;
+       }
+       /* Clearfix (clear floats) */
+       .row::after {
+       content: "";
+       clear: both;
+       display: table;
+       }
+    </style>
+    
+    <p>Round {{player.round_number}} out of {{C.NUM_ROUNDS}} <br> Total payoff: {{participant.total_payoff|to2}} <br> Previous selection: {{previous_choice}}</p>
+    
+    <p> Below you find three products of different qualities. You must decide for one of them. 
+       The product quality is associated with higher probabilities of receiving a payoff. 
+    </p>
+    <br>
+    <div class="row">
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product1_o.png" }} alt="Product 1" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product2_o.png" }} alt="Product 2" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product3_o.png" }} alt="Product 3" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+    </div>
+    <br>
+    
+    Would you like to delegate your further decisions to an algorithm? The algorithm will make subsequent choices instead of you. You may take back control by clicking on the
+    <b>STOP</b> button before {{C.AUTO_TIMER}} seconds run out. 
+    
+    {{ formfields }}
+
+    <p>Click "next" after your choice to proceed. </p>
+    <br>
+
+
+{{ if player.round_number == C.CAT_ROUND}}
+<div class="image-wrapper">
+<label style="text-align: center">
+  <img src={{ static "animal_photo.png" }} alt="Animal" style="width:15%">
+</div>
+{{else}}{{endif}}
+<br>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+
+{{block scripts}}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var total = 0;
+
+        const check = setInterval(checkVisibility, 1000);
+        function checkVisibility() {
+          if (document.hidden) {
+          } else {
+            total = total + 1;
+          }
+          //you can send request to backend here for updating the database or backend variables
+          liveSend({"information_type": "active_time", "value": total})
+          console.log("total", total);
+        }
+      });
+    </script>
+
+{{endblock}}

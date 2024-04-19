@@ -1,0 +1,39 @@
+{{ block title }}
+    <div>
+       <img src="{{ static 'uni_logo2.png' }}" width="300", style="float:right"/>
+    </div>
+    <br><br><br><br>
+    Welcome to the study - Introduction
+{{ endblock }}
+
+{{ block content }}
+    <p>
+       Dear study participant, <br>
+       thank you for taking part in this study!<br><br>
+       The study takes approximately <b>20 minutes</b>.<br>
+       <b> <br> Please only start the study if you will not be disturbed for this period and can work on the study in a concentrated manner.
+       <br>
+       Please turn off all notifications and alarms.</b>
+    </p>
+    <b>Payments</b>
+    <p>By participating in this study, you can earn money based on your decisions. <br>
+       For each successful round, you will receive {{C.BASE_PAYOFF}} point. In the beginning, you will receive {{C.ENDOWMENT}} bonus point. 
+       Each point will be converted to {{C.CONV_FACTOR}} euro. The total earnings for the experiment can go up to {{total_points_possible | to2}} euros. 
+    </p>
+    <b>Today's session</b>
+    <p>Today's session will consist of the following steps: a general demographics questionnaire, the task of this experiment, and a short final questionnaire 
+       with personality questions.
+    </p>
+    <b>Instructions</b>
+    <p>You will receive all the necessary instructions via the next screens. Please take the time to read them carefully.</p>
+    <b>Anonymity and data protection</b>
+    <p>Your participation in this study is purely voluntary, and you will remain anonymous throughout the study.
+       Therefore the study results can never reveal any identifying information about you.
+       The payment process will be handled by a different team member, and all personal information necessary for the payment will never be connected to the study data. All data be handled according to GDPR (General Data Protection Regulation of the European Union).
+    </p>
+    <p><u>Throughout this experiment, there is no deception or misleading information in any way</u>.</p>
+    <p>By clicking next, you agree to participate in this study.</p>
+    
+    {{ next_button }}
+    
+{{ endblock }}

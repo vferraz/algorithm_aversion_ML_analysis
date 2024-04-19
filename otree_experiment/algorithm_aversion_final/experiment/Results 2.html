@@ -1,0 +1,17 @@
+{{ block title }}
+    Final Results
+{{ endblock }}
+
+    
+{{ block content }}
+    
+    Your total payoff for the {{C.NUM_ROUNDS}} rounds is {{player.payoff_total|to1}}<br><br>
+    
+    Your earnings in the experiment are <b>TBD</b><br><br>
+
+    Please click on "next" to proceed to the final questionnaire. 
+    
+  {{ next_button }}
+{{ endblock }}
+
+

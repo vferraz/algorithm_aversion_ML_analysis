@@ -1,0 +1,64 @@
+
+
+{{ block title }}
+   Instructions
+{{ endblock }}
+{{ block content }}
+
+<style>
+.center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+</style>
+
+    In this experiment, you will be presented with three product choices, which will be named generically. 
+    <br><br>
+    <h5>Product Selection</h5>
+    <br>
+    Each of the products has a <b>quality level</b>, which will be randomly allocated between the three alternatives. 
+    During the experiment, you will have to select one of the products, and you will receive a payoff according to your selection, as in the example below:
+    <br><br><br>
+        <img src={{ static "instr_1.png" }} alt="instr1" style="width:75%" class="center">
+    
+<br><br>
+The product quality levels introduce different probabilities of acquiring points as a payoff, defined as: 
+
+<ul>
+  <li><b>High quality</b> – {{C.PROB_3}} probability of receiving {{C.BASE_PAYOFF}} point </li>
+  <li><b>Medium quality</b> – {{C.PROB_2}} probability of receiving {{C.BASE_PAYOFF}} point </li>
+  <li><b>Low quality –</b> {{C.PROB_1}} probability of receiving {{C.BASE_PAYOFF}} point </li>
+</ul>
+ 
+You will have the opportunity to perform repeated product selections for {{C.NUM_ROUNDS}} rounds. 
+The product qualities will remain unchanged across the rounds after initial random allocation. 
+For example, if your quality allocation was Product 1: High, Product 2: Low, and Product 3: Medium; these values will remain throughout the experiment. 
+<br><br>
+If you learn which product is associated with which quality level, you will have higher chances of better payoffs. 
+<br><br><br>
+
+<h5>Decision Delegation</h5>
+<br>
+
+In each round, you will have the opportunity to delegate your decision to an algorithm, which will select the product for you in the next rounds, <b> automating the product selection
+process</b>. At the end of each round, you will have the opportunity to disable the automated algorithm's decisions by taking back control over the choices. You will be able to turn on the automation again, if desired. 
+<br><br>
+If you choose to delegate (automate), you get feedback on the selection of the algorithm at each round. If you do not delegate, you can make the product selection yourself. 
+
+<br><br><br>
+
+<h5>Questionnaire</h5>
+<br>
+
+
+When the experiment is finished, you will be redirected to a questionnaire with simple multiple choice questions. After that, 
+you will  the conclusion page, where your results will be shown, as well as the final results and your earnings. 
+<br><br>
+To start with the experiment, please click “next”. 
+<br><br>
+
+    {{ next_button }}
+
+{{ endblock }}
+

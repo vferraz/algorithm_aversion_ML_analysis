@@ -1,0 +1,119 @@
+{{ block title }}
+    Product Selection - Automated Mode
+{{ endblock }}
+{{ block content }}
+
+
+
+    <style>
+       * {
+       box-sizing: border-box;
+       }
+       .column {
+       float: left;
+       width: 33.33%;
+       padding: 5px;
+       }
+       /* Clearfix (clear floats) */
+       .row::after {
+       content: "";
+       clear: both;
+       display: table;
+       }
+    </style>
+        
+
+     <p><h5>Round {{player.round_number}} out of {{C.NUM_ROUNDS}}</h5></p><br>
+
+     <p><b><u>Product {{selection_show}}</b></u> has been selected by the algorithm for this round.
+     The payoff for this choice is {{payoff_show|to0}} point.</p>
+
+    <br>
+    <div class="row">
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static img_p1 }} alt="Product 1" style="width:70%">
+          <br>
+          <br>
+          </label> 
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static img_p2 }} alt="Product 2" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static img_p3 }} alt="Product 3" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+    </div>
+    <br>
+
+
+    <p>Your total payoff so far is <b>{{total_payoff_show|to2}}</b></p> <br>
+    
+    <p>To take control back and make your own choices, click on the button below. You will be redirected to the initial selectioin page after the timer ends.</p>
+            <br>
+
+
+{{ if player.round_number == C.CAT_ROUND}}
+<div class="image-wrapper">
+<label style="text-align: center">
+  <img src={{ static "animal_photo.png" }} alt="Animal" style="width:15%">
+</div>
+{{else}}{{endif}}
+<br>
+
+     <button
+        type="button" 
+        id="stop_button"
+        class="btn btn-primary mt-2"
+        onclick="stop_func();"
+        >
+        Take Control
+    </button>
+    
+
+{{ endblock }}
+
+{{block scripts}}
+
+    <script>
+    
+    var stop_criterion = 0;
+    var button_click = 0;
+    
+    function stop_func() {
+        stop_criterion = 0;
+        button_click = 1;
+        document.getElementById("stop_button").disabled = true;
+        liveSend({"information_type": "stop", "value":stop_criterion});
+        liveSend({"information_type": "button_click", "value":button_click});
+    }
+
+        
+    </script>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var total = 0;
+
+        const check = setInterval(checkVisibility, 1000);
+        function checkVisibility() {
+          if (document.hidden) {
+          } else {
+            total = total + 1;
+          }
+          //you can send request to backend here for updating the database or backend variables
+          liveSend({"information_type": "active_time", "value": total})
+          console.log("total", total);
+        }
+      });
+    </script>
+
+{{endblock}}

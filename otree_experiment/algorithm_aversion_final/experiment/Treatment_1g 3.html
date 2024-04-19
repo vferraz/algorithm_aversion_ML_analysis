@@ -1,0 +1,114 @@
+{{ block title }}
+    Product Selection
+{{ endblock }}
+{{ block content }}
+
+    <style>
+       * {
+       box-sizing: border-box;
+       }
+       .column {
+       float: left;
+       width: 33.33%;
+       padding: 5px;
+       }
+       /* Clearfix (clear floats) */
+       .row::after {
+       content: "";
+       clear: both;
+       display: table;
+       }
+    </style>
+    
+    <p>Round {{player.round_number}} out of {{C.NUM_ROUNDS}} <br> Total payoff: {{participant.total_payoff}} <br> Previous selection: {{previous_choice}}</p>
+    
+    <p> Below you find three products of different qualities. You must decide for one of them. 
+       The product quality is associated with higher probabilities of receiving a payoff. 
+    </p>
+    <br>
+    <div class="row">
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product1_o.png" }} alt="Product 1" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product2_o.png" }} alt="Product 2" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+       <div class="column">
+          <label style="text-align: center">
+          <img src={{ static "product3_o.png" }} alt="Product 3" style="width:70%">
+          <br>
+          <br>
+          </label>
+       </div>
+    </div>
+    <br>
+    
+    You have the opportunity to delegate your decision in this round to an algorithm. You can find information about the algorithm below: 
+    <br><br>
+    <div style="background-color: #EBEBEB ; padding: 10px; border: 1px grey; text-align: center;"> 
+     <b>Reinforcement Learning: </b>{{C.ALGO_DESC}}</div>
+    <br>
+    
+    Would you like to delegate your further decisions to an algorithm? The algorithm will make subsequent choices instead of you. You may take back control by clicking on the
+    <b>STOP</b> button before {{C.AUTO_TIMER}} seconds run out. 
+    
+    {{ formfields }}
+
+    <p>Click "next" after your choice to proceed. </p>
+    <br>
+
+
+{{ if player.round_number == C.CAT_ROUND}}
+<div class="image-wrapper">
+<label style="text-align: center">
+  <img src={{ static "animal_photo.png" }} alt="Animal" style="width:15%">
+</div>
+{{else}}{{endif}}
+<br>
+
+    {{ next_button }}
+
+{{ endblock }}
+
+{{block scripts}}
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        var total = 0;
+        var start = null;
+        var end = null;
+        var cal = null;
+        start = new Date();
+        window.addEventListener("beforeunload", () => {
+          console.log(total);
+        });
+        function calTime(end, start) {
+          let h = end.getHours() * 120 - start.getHours() * 120;
+          let m = end.getMinutes() * 60 - start.getMinutes() * 60;
+          let s = end.getSeconds() - start.getSeconds();
+          total = total + h + m + s;
+          liveSend({"information_type": "active_time", "value": total})
+          console.log(total);
+        }
+        document.addEventListener("visibilitychange", function (event) {
+          if (document.hidden) {
+            end = new Date();
+            calTime(end, start);
+          } else {
+            start = new Date();
+          }
+         
+        });
+      });
+      
+    </script>
+
+{{endblock}}

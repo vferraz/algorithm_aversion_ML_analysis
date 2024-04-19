@@ -1,0 +1,26 @@
+{{ block title }}
+    End of the experiment
+{{ endblock }}
+
+    
+{{ block content }}
+    Thank you for participating in this experiment, your answers have been recorded. <br><br>
+    
+    {{ if questions_correct == 1}} 
+    <p> Your attection questions were correct, you gained extra {{C.POINTS_PSYCH}} points.</p>
+    
+    {{else}}
+     <p> Your attention questions were incorrect, you didn't gain the extra points.</p>
+     
+     
+     {{endif}}
+     
+     Your total points for this experiment is {{player.payoff_total_final}} <br><br>
+     
+     Your total earnings are TBD <br><br>
+     
+     Please proceed to the next page for payment details. 
+      
+ <br><br>
+
+{{ endblock }}

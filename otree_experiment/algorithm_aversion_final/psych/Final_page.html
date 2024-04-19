@@ -1,0 +1,67 @@
+{{ block title }}
+    End of the Experiment
+{{ endblock }}
+
+{{ block content }}
+    <style>
+       * {
+       box-sizing: border-box;
+       }
+       .column {
+       float: left;
+       width: 33.33%;
+       padding: 5px;
+       }
+       /* Clearfix (clear floats) */
+       .row::after {
+       content: "";
+       clear: both;
+       display: flex;
+       }
+    </style>
+    Thank you for participating in this experiment, your answers have been recorded. <br><br>
+
+    Your total points for this experiment is <b>{{player.payoff_total_final ||to2}} points.</b><br>
+    Your total earnings are <b>{{player.earnings_t | to2}} euros.</b><br><br>
+    Please click the link below to proceed to the next page for payment details. The payment data will be handled separately from the experiment data. <br>
+    Please take note of the payment ID generated below. You will need to copy it to the payment survey so we can transfer the amount related to your earnings. 
+    <br><br>
+    <b>Payment ID:</b>
+    <h4>
+       <div id="code" style="width: 200px; height: 50px; background-color: #D8D8D8 ; padding: 10px; border: 1px grey; text-align: center;"> 
+          <b>{{player.payment_id_m }} </b
+       </div>
+    </h4>
+    <button
+       type="button" 
+       id="copy"
+       class="btn btn-primary mt-2"
+       onclick="CopyToClipboard('code');"
+       >
+    Copy ID
+    </button>
+    <br><br>
+    Payment survey link:<br>
+    <a href="https://awiheidelberg.eu.qualtrics.com/jfe/form/SV_e3RJ6WKQUkfbtMa" target="_blank">Click Here to Proceed to the Payment Survey</a>
+    <br><br>
+{{ endblock }}
+
+{{block scripts}}
+    <script>
+       function CopyToClipboard(containerid) {
+         if (document.selection) {
+           var range = document.body.createTextRange();
+           range.moveToElementText(document.getElementById(containerid));
+           range.select().createTextRange();
+           document.execCommand("copy");
+         } else if (window.getSelection) {
+           var range = document.createRange();
+           range.selectNode(document.getElementById(containerid));
+           window.getSelection().addRange(range);
+           document.execCommand("copy");
+           alert("Text has been copied to clipboard, please paste it in the payment survey")
+         }
+       }
+       
+    </script>
+{{ endblock }}

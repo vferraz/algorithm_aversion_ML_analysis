@@ -1,0 +1,30 @@
+{{ block title }}
+    Questions continued
+{{ endblock }}
+
+{{ block content }}
+
+    <p>
+    Would you say that the most of the time, you <br><br>
+    <br>
+    </p>
+
+    <table class="table">
+        <tr>
+            <th > </th>
+            <th style="width:100px">Strongly Disagree</th><th style="width:100px">Disagree</th><th style="width:100px">Somewhat Disagree</th>
+            <th style="width:100px">Neither agree nor disagree</th>
+            <th style="width:100px">Somewhat Agree</th><th style="width:100px">Agree</th><th style="width:100px">Strongly Agree</th>
+        </tr>
+        {% for field in form %}
+            <tr>
+                <th>{{ field.label }}</th>
+                {% for choice in field %}
+                    <td>{{ choice }}</td>
+                {% endfor %}
+            </tr>
+        {% endfor %}
+    </table>
+    {% next_button %}
+
+{{ endblock }}
