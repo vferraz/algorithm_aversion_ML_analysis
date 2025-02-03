@@ -20,7 +20,7 @@ Keywords: Algorithm Aversion, Human-Computer Interaction, Decision Behavior, Mac
 ## How to Use
 
 - To replicate the oTree experiment, navigate to the `otree_experiment_source/` directory and follow the instructions.
-- Datasets are located in the `data_analysis_reproductio/data/` directory for data analysis. Statistical and machine learning analyses can be conducted using the scripts and notebooks in the `data_analysis_reproductions/` section.
+- Datasets are located in the `data_analysis_reproduction/data/` directory for data analysis. Statistical and machine learning analyses can be conducted using the scripts and notebooks in the `data_analysis_reproduction/` section.
 
 
 Corresponding Author: Vinicius Ferraz - visferraz@gmail.com
