@@ -1,12 +1,14 @@
 # Trust in the Machine: How Contextual Factors and Personality Traits Shape Algorithm Aversion and Collaboration
  
-This repository contains the reproduction package for the paper "Trust in the Machine: How Contextual Factors and Personality Traits Shape Algorithm Aversion and Collaboration,"
+This repository contains the reproduction package for the paper "Trust in the Machine: How Contextual Factors and Personality Traits Shape Algorithm Aversion and Collaboration."
 
 ## About the Paper
 
-Abstract: The paper explores the nuanced dynamics between contextual influences and individual differences in shaping attitudes toward algorithmic decision-making. Through an experimental study involving a simplified multi-armed bandit problem, we delve into the impacts of explainability, costs, automation, and personality traits on the willingness to delegate decisions to algorithms. Our findings reveal significant insights into crafting user-centric AI systems that foster cooperation and minimize aversion.
+Content: The paper explores the nuanced dynamics between contextual influences and individual differences in shaping attitudes toward algorithmic decision-making. Through an experimental study involving a simplified multi-armed bandit problem, we delve into the impacts of explainability, costs, automation, and personality traits on the willingness to delegate decisions to algorithms. Our findings reveal significant insights into crafting user-centric AI systems that foster cooperation and minimize aversion.
 
 Keywords: Algorithm Aversion, Human-Computer Interaction, Decision Behavior, Machine Learning, Causal Inference
+
+Paper source: https://doi.org/10.1016/j.chbr.2024.100578
 
 ## Repository Contents
 
